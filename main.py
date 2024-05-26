@@ -42,14 +42,15 @@ def find_rotation_matrix_for_3D(degree: float, axis: str):
         ])
 
 
-def rotate_object_by_degrees(object, degree: float, axis='-'):
+def rotate_object_by_degrees(object, degree: float, axis=None):
     degree = np.radians(degree)
     rotation_matrix = None
     if object.shape[1] == 2:
         rotation_matrix = find_rotation_matrix_for_2D(degree)
     elif object.shape[1] == 3:
         rotation_matrix = find_rotation_matrix_for_3D(degree, axis)
-    return np.dot(rotation_matrix, object.T).T
+    # return np.dot(rotation_matrix, object.T).T
+    return np.dot( object, rotation_matrix)
 
 
 def scale(object, scalar: float):
