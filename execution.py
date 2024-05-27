@@ -1,5 +1,5 @@
-from Objects import *
-from MainFunctionsForPart1 import *
+from objects import *
+from mainFunctionsForPart1 import *
 
 plot_2d_object( goose, 'Goose', 'purple', 3 )
 plot_2d_object( wolf, 'Wolf', 'purple', 3 )

@@ -1,6 +1,6 @@
 import cv2
 import numpy as np
-from Objects import goose, wolf, goose_name, wolf_name
+from objects import goose, wolf, goose_name, wolf_name
 from main import plot_2d_object
 
 
