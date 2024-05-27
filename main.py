@@ -49,11 +49,11 @@ def rotate_object_by_degrees(object, degree: float, axis=None):
         rotation_matrix = find_rotation_matrix_for_2D(degree)
     elif object.shape[1] == 3:
         rotation_matrix = find_rotation_matrix_for_3D(degree, axis)
-    # return np.dot(rotation_matrix, object.T).T
-    return np.dot( object, rotation_matrix)
+    return np.dot(rotation_matrix, object.T).T
+    # return np.dot( object, rotation_matrix)
 
 
-def scale(object, scalar: float):
+def scale_main(object, scalar: float):
     if object.shape[1] == 2:
         matrix = np.array([[scalar, 0],
                             [0, scalar]])
@@ -80,24 +80,28 @@ def mirror_by_axis(object, axis: str):
         matrix = np.array([[-1, 0, 0], [0, -1, 0], [0, 0, 1]])
     return np.dot(matrix, object.T).T
 
-def shear(object, axis: str, degree: float):
+def shear(object, axis: str, degree: float, axis2 = None):
     degree = np.radians(degree)
-    if axis.lower() == 'x':
+    axis = axis.lower()
+    if axis == 'x':
         matrix = np.array( [[1, np.tan(degree)], [0, 1]] )
-    else:
+    elif axis == 'y' and axis2 == None:
         matrix = np.array( [[1, 0], [np.tan(degree), 1]] )
-
-    return np.dot(matrix, object.T).T
-
-def shear2(object, axis: str, constant: float):
-    if axis.lower() == 'x':
-        matrix = np.array( [[1, constant], [0, 1]] )
     else:
-        matrix = np.array( [[1, 0], [constant, 1]] )
-
+        matrix = np.array( [[1, np.tan(degree)], [np.tan(degree), 1]] )
     return np.dot(matrix, object.T).T
 
-def universal(object, matrix):
+def shear2(object, axis: str, constant: float, axis2=None):
+    axis = axis.lower()
+    if axis == 'x' and axis2 == None:
+        matrix = np.array( [[1, constant], [0, 1]] )
+    elif axis == 'y' and axis2 == None:
+        matrix = np.array( [[1, 0], [constant, 1]] )
+    else:
+        matrix = np.array( [[1, constant], [constant, 1]] )
+    return np.dot(matrix, object.T).T
+
+def universal_main(object, matrix):
     return np.dot(matrix, object.T).T
 
 
