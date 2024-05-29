@@ -50,8 +50,6 @@ def rotate_object_by_degrees(object, degree: float, axis=None):
     elif object.shape[1] == 3:
         rotation_matrix = find_rotation_matrix_for_3D(degree, axis)
     return np.dot(rotation_matrix, object.T).T
-    # return np.dot( object, rotation_matrix)
-
 
 def scale_main(object, scalar: float):
     if object.shape[1] == 2:

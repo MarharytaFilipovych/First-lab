@@ -24,18 +24,6 @@ def scale(object_name, object, scalar):
 
     print( cv2.getRotationMatrix2D((0, 0), 0, 1 ))
 
-'''def mirror(object_name, object, axis: str):
-    axis = axis.lower()
-    if axis == 'x':
-        object = cv2.flip(object, 0)
-    elif axis == 'y':
-        object = cv2.flip(object, 1)
-    else:
-        raise ValueError("Axis must be 'x' or 'y'.")
-    plot_2d_object(object[:, 0], f'{object_name} mirrored along {axis}-axis', 'black', 3)
-    print(object[:, 0])'''
-
-
 def shear(object_name, object, constant, axis, axis2=None):
     if axis == 'x' and axis2==None:
         matrix = np.float32([[1, constant, 0], [0, 1, 0]])
@@ -50,7 +38,7 @@ def shear(object_name, object, constant, axis, axis2=None):
         object = cv2.transform( object, matrix )
         plot_2d_object(object[:, 0], f'{object_name} sheared by {constant} in both directions', 'grey', 3 )
 
-def mirror_true (object_name, object, axis: str):
+def mirror (object_name, object, axis: str):
     axis = axis.lower()
     if axis == 'x':
         matrix = np.float32([[1, 0, 0], [0, -1, 0]])
@@ -73,11 +61,7 @@ rotate(wolf_name, wolf, 90)
 scale(goose_name, goose, 2)
 scale(wolf_name, wolf, 2)
 
-mirror_true(goose_name, goose, 'x')
-mirror_true(goose_name, goose, 'y')
-mirror_true(wolf_name, wolf, 'x')
-mirror_true(wolf_name, wolf, 'y')
-'''mirror(goose_name, goose, 'x')
-mirror(goose_name, goose, 'y')
-mirror(wolf_name, wolf, 'x')
-mirror(wolf_name, wolf, 'y')'''
+mirror( goose_name, goose, 'x' )
+mirror( goose_name, goose, 'y' )
+mirror( wolf_name, wolf, 'x' )
+mirror( wolf_name, wolf, 'y' )
