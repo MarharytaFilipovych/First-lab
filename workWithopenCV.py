@@ -3,10 +3,8 @@ import numpy as np
 from objects import goose, wolf, goose_name, wolf_name
 from main import plot_2d_object
 
-
 goose = goose.reshape((-1, 1, 2)).astype(np.float32)
 wolf = wolf.reshape((-1, 1, 2)).astype(np.float32)
-
 
 plot_2d_object(goose[:, 0], 'Initial goose', 'black', 3)
 plot_2d_object(wolf[:, 0], 'Initial wolf', 'black', 3)
@@ -46,7 +44,6 @@ def mirror (object_name, object, axis: str):
         matrix = np.float32([[-1, 0, 0], [0, 1, 0]])
     object = cv2.transform(object, matrix)
     plot_2d_object( object[:, 0], f'{object_name} mirrored through {axis}-axis', 'yellow', 3 )
-
 
 shear(goose_name, goose, 0.5, 'x')
 shear(goose_name, goose, 0.5, 'y')

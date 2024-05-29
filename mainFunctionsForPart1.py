@@ -18,7 +18,6 @@ def scale(object_name, object, scalar):
         plot_3d_object( scale_main(  object, scalar ), f'{object_name} - scaled {scalar} times', 'green' )
         print( scale_main(  object, scalar ) )
 
-
 def mirror(object_name, object, axis):
     if object.shape[1] == 2:
         plot_2d_object( mirror_by_axis( object, axis ), f'{object_name} - mirrored {axis}', 'purple', 3 )
@@ -26,7 +25,6 @@ def mirror(object_name, object, axis):
     else:
         plot_3d_object( mirror_by_axis( object, axis ), f'{object_name} - mirrored {axis}', 'green' )
         print( mirror_by_axis( object, axis ) )
-
 
 def shear_by_degree(object_name, object, axis, degree, axis2 = None):
     if axis2 != None:
@@ -38,7 +36,6 @@ def shear_by_degree(object_name, object, axis, degree, axis2 = None):
                     3 )
     print( shear( object, axis, degree ) )
 
-
 def shear_by_constant(object_name, object, axis, constant, axis2 = None):
     if axis2 != None:
         plot_2d_object( shear2( object, axis, constant, axis2 ), f'{object_name} - sheared by {constant} towards x and y',
@@ -46,7 +43,6 @@ def shear_by_constant(object_name, object, axis, constant, axis2 = None):
         print( shear2( object, axis, constant, axis2 ) )
     plot_2d_object( shear2( object, axis, constant ), f'{object_name} - sheared by {constant} towards {axis}', 'purple', 3 )
     print( shear2( object, axis, constant ) )
-
 
 def universal(object_name, object, matrix):
     if object.shape[1] == 2:

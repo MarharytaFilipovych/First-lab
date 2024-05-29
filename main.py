@@ -41,7 +41,6 @@ def find_rotation_matrix_for_3D(degree: float, axis: str):
             [0, 0, 1]
         ])
 
-
 def rotate_object_by_degrees(object, degree: float, axis=None):
     degree = np.radians(degree)
     rotation_matrix = None
